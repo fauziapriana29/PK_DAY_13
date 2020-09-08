@@ -4,26 +4,27 @@ import Table from '../../Component/Table/Table.jsx'
 
 const Api = () => {
 
-    const [starWar, setStarWar] = useState([])
+    const [film, setfilm] = useState([])
         const fetchApi = () => {axios
-          .get("https://swapi.dev/api/people/")
+          .get("https://ghibliapi.herokuapp.com/films")
           .then((respone) => {
-              console.log(respone.data.results);
-              const data = respone.data.results
-              setStarWar(data)
+            console.log(respone.data)
+            setfilm(respone.data);
           })
           .catch((error) => {
             console.log(error);
           });}
     useEffect(() => {
-        fetchApi()
+        // fetchApi()
     }, [])
-    
+
     return (
         <div>
             <h1>API Page</h1>
-            {/* <button className='btn btn-primary' onClick={fetchApi}>Fetch</button> */}
-            <Table starWar={starWar}/>
+            <br/>
+            <button className='btn btn-primary' onClick={fetchApi}>Fetch Data</button>
+            <br/><br/>
+            <Table data={film}/>
         </div>
     )
 }

@@ -1,17 +1,19 @@
 import React from 'react'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 const Table = (props) => {
+
     console.log(props)
-    const { starWar } = props
-    const MapData = starWar.map((data, index) => {
+  const { data } = props
+  const { url} = useRouteMatch()
+    const MapData = data.map((data, index) => {
         return (
           <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{data.name}</td>
-            <td>{data.height}</td>
-            <td>{data.mass}</td>
-            <td>{data.hair_color}</td>
-            <td>{data.skin_color}</td>
+            <th scope="row">{index + 1}</th>
+                <td>{data.title}</td>
+            <td>{data.producer}</td>
+            <td>{data.director}</td>
+            <td><Link className="btn btn-secondary" to={`${url}/detail/${data.id}`}>See Detail</Link></td>
           </tr>
         );
     })
@@ -21,11 +23,10 @@ const Table = (props) => {
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Height</th>
-              <th scope="col">Mass</th>
-              <th scope="col">Hair Color</th>
-              <th scope="col">Skin Color</th>
+              <th scope="col">Title</th>
+              <th scope="col">Producer</th>
+              <th scope="col">Director</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>

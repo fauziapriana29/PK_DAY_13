@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../Component/Navbar/Navbar.jsx";
 import Home from "./Home/Home.jsx";
 import Student from "./Student/Student.jsx"
-import Api from "./API/API.jsx";
+import Index from "./API/index";
 
-const Index = () => {
+const index = () => {
   return (
     <div>
       <Router>
@@ -13,7 +13,7 @@ const Index = () => {
         <div className="container">
           <Switch>
             <Route path="/student" component={Student} />
-            <Route path="/api" component={Api} />
+            <Route path="/api" component={Index} />
             <Route path="/" exact component={Home} />
           </Switch>
         </div>
@@ -22,4 +22,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default index;
